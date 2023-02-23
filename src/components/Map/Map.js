@@ -57,8 +57,12 @@ export default class SimpleMapPage extends Component {
                     zoom={this.props.zoom}
                     options={createMapOptions}>
 
+                    {/* //TODO: add many places as u like below by changing the latitude and longitudes */}
+                    <MyGreatPlace lat={13.5560} lng={78.5010} text={'mpl'} />
+                    <MyGreatPlace lat={23.5560} lng={88.5010} text={'a'} />
+                    <MyGreatPlace lat={43.5560} lng={58.5010} text={'b'} />
 
-                    <MyGreatPlace lat={13.5560} lng={78.5010} text={'mpl'} /* Kreyser Avrora */ />
+                    <MyGreatPlace lat={15.5560} lng={78.5010} text={'krnl'} />
                 </GoogleMap>
             </div>
 
