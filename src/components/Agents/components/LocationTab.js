@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { BsChevronDown, BsChevronRight } from 'react-icons/bs'
 import AgentTab from './AgentTab'
 
 export class LocationTab extends Component {
@@ -11,7 +12,9 @@ export class LocationTab extends Component {
     }
 
     setActiveAgent = (id) => {
-        this.setState({ activeAgent: id })
+        this.setState((prevState) => ({
+            activeAgent: prevState.activeAgent === id ? null : id
+        }))
     }
 
     render() {
@@ -19,7 +22,11 @@ export class LocationTab extends Component {
         const { activeAgent } = this.state
         return (
             <li className='location-tab'>
-                <button onClick={this.setMeActiveLocation} className="location-tab-btn">{location.locationName} </button>
+                <button onClick={this.setMeActiveLocation} className={`location-tab-btn ${isActive && "active-location-btn"}`}>
+                    <span >{location.locationName}</span>
+                    {isActive ? <BsChevronDown /> : <BsChevronRight />}
+
+                </button>
                 {
                     isActive &&
                     <ul className="agent-tabs-con">

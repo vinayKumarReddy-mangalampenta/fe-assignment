@@ -2,18 +2,19 @@ import React, { Component } from 'react'
 
 import './index.css'
 import LocationTab from './LocationTab'
-
+import { BsChevronDown, BsChevronRight } from 'react-icons/bs'
 export class GroupTab extends Component {
-
     state = { activeLocation: "" }
-
     setMeActive = () => {
         const { group, setActiveGroup } = this.props
         setActiveGroup(group.gid)
     }
 
     setActiveLocation = (id) => {
-        this.setState({ activeLocation: id })
+        this.setState((prevState) => ({
+            activeLocation: prevState.activeLocation === id ? null : id
+        }))
+
     }
 
     render() {
@@ -22,7 +23,9 @@ export class GroupTab extends Component {
         return (
             <li className='group-tab'>
                 <button className={`group-btn ${isActive ? "group-tab-active-btn " : ""}`} onClick={this.setMeActive}>
-                    <span >{group.name} - {index}</span>
+                    <span >{group.name} - {index} </span>
+                    {isActive ? <BsChevronDown /> : <BsChevronRight />}
+
                 </button>
                 {
                     isActive &&

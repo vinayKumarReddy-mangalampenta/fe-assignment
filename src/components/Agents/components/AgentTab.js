@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { BsChevronDown, BsChevronRight } from 'react-icons/bs'
 
 class AgentTab extends Component {
 
@@ -10,7 +11,6 @@ class AgentTab extends Component {
     }
 
     setActiveAgentConnection = (id) => {
-
         this.setState({ activeAgentConnection: id })
         //TODO: maintain current connection as in context and display the details of it in index.js 
     }
@@ -21,7 +21,11 @@ class AgentTab extends Component {
         const { activeAgentConnection } = this.state
         return (
             <li className='agent-tab'>
-                <button className='agent-tab-btn' onClick={this.setMeActiveAgent} >Agent </button>
+                <button className={`agent-tab-btn ${isActive && "active-agent-tab-btn"}`} onClick={this.setMeActiveAgent} >
+                    <span >Agent Name</span>
+                    {isActive ? <BsChevronDown /> : <BsChevronRight />}
+
+                </button>
                 {isActive && <ul className='agents-sub-tabs-con'>
                     {/*  //TODO:  may be we should do mapping here  with actual data */}
                     {
@@ -48,7 +52,12 @@ const AgentConnection = (props) => {
 
     return (
         <li className='agent-sub-tab' key={connection} >
-            <button onClick={setMeAsActiveConnection} className={`agent-sub-tab-btn ${isActive ? "active-agent-sub-tab " : ""}`} >AP {connection}</button>
+            <button onClick={setMeAsActiveConnection} className={`agent-sub-tab-btn ${isActive ? "active-agent-sub-tab " : ""}`} >
+                <span >
+                    <span style={{ fontSize: "20px", visibility: `${isActive ? "visible" : "hidden"}` }}>&#x2022; </span>
+                    AP {connection}
+                </span>
+            </button>
         </li>
     )
 }

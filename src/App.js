@@ -15,12 +15,12 @@ function App() {
   return (
     <div className="App">
       {/* include it here */}
-      <i >
+      {/* <i >
         <b >
           <a href='/agents' >agents </a>
           <a href='/home' >Home map view</a>
         </b>
-      </i>
+      </i> */}
 
 
       <BrowserRouter >
