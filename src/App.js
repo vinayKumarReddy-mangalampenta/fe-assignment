@@ -4,6 +4,7 @@ import Home from './components/Home/Home';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import Reports from './components/Reports/Reports';
 import Map from './components/Map/Map';
+import Navbar from './components/Navbar';
 
 const location = {
   address: '1600 Amphitheatre Parkway, Mountain View, california.',
@@ -13,7 +14,7 @@ const location = {
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" >
       {/* include it here */}
       {/* <i >
         <b >
@@ -23,7 +24,8 @@ function App() {
       </i> */}
 
 
-      <BrowserRouter >
+      <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route exact path='/' element={<Map location={location} zoomLevel={17} />} />
           <Route exact path='/agents' element={<Home />} />

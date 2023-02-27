@@ -5,7 +5,7 @@ import AgentContext from '../../../context/AgentContext'
 
 class AgentTab extends Component {
 
-    state = { activeAgentConnection: 1 }
+    state = { activeAgentConnection: null }
 
     setMeActiveAgent = () => {
         const { setActiveAgent, agent } = this.props

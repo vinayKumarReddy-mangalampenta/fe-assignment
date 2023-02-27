@@ -1,0 +1,30 @@
+.navbar-container {
+    background-color: deepskyblue;
+    align-self: stretch;
+    position: relative;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    width: 80px;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    gap: 20px;
+}
+
+.link-icon {
+    width: 60px;
+    height: auto;
+    background-color: transparent;
+}
+
+.nav-link-con:first-child {
+    margin-top: 20px;
+}
+
+.nav-link-con:last-child {
+    margin-top: auto;
+
+}

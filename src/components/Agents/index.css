@@ -4,6 +4,7 @@
     display: flex;
     gap: 10px;
     justify-content: start;
+    width: 100%;
 }
 
 .sub-nav-con {
@@ -127,11 +128,14 @@
 .wifi-status-card {
     box-shadow: 0px 0px 20px #000;
     display: flex;
-    gap: 10px;
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
     padding: 20px;
+}
+
+.network-wifi-application-con {
+    gap: 10px;
 }
 
 .network-cards {
@@ -151,8 +155,8 @@
 }
 
 .network-card-img {
-    height: 90px;
-    width: auto;
+    height: 70px;
+    width: 70px;
 }
 
 .wifi-status-card {

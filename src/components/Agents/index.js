@@ -196,7 +196,7 @@ class AgentNavbar extends Component {
     }
 
     renderAgentDetails = () => {
-        const { currUserAddress, dataShowing } = this.state
+        const { currUserAddress } = this.state
         return (
             <div className='display-container'>
                 <span>
@@ -226,7 +226,7 @@ class AgentNavbar extends Component {
                         <span >
                             Wifi Status
                         </span>
-                        <img src='https://cdn.pixabay.com/photo/2016/03/30/13/24/wifi-1290667__340.png' className='network-card-img' alt='good' />
+                        <img src='wifi.jpg' className='network-card-img' alt='Wifi Status' />
                     </div>
                     <div className='network-cards' onClick={() => {
                         this.setState({ dataShowing: DATA_STATUS_SHOWN.network })
@@ -234,7 +234,7 @@ class AgentNavbar extends Component {
                         <span >
                             Network Status
                         </span>
-                        <img src='network.jpg' className='status-smile' alt='good' />
+                        <img src='network.jpg' className='network-card-img' alt='network Status' />
 
                     </div>
                     <div className='network-cards' onClick={() => {
@@ -243,7 +243,7 @@ class AgentNavbar extends Component {
                         <span >
                             Application Status
                         </span>
-                        <img src='Application.jpg' className='status-smile' alt='good' />
+                        <img src='Application.jpg' className='network-card-img' alt='Application Status' />
 
                     </div>
                 </div>

@@ -37,7 +37,6 @@ const groups = [
                         id: 3,
                         agentName: "agent 3",
                     }
-
                 ]
             },
             {
@@ -56,7 +55,6 @@ const groups = [
                         id: 3,
                         agentName: "agent 3",
                     }
-
                 ]
             },
             {
@@ -75,7 +73,6 @@ const groups = [
                         id: 3,
                         agentName: "agent 3",
                     }
-
                 ]
             },
         ]
@@ -100,7 +97,6 @@ const groups = [
                         id: 3,
                         agentName: "agent 3",
                     }
-
                 ]
             },
             {
@@ -119,7 +115,6 @@ const groups = [
                         id: 3,
                         agentName: "agent 3",
                     }
-
                 ]
             },
             {
@@ -138,7 +133,6 @@ const groups = [
                         id: 3,
                         agentName: "agent 3",
                     }
-
                 ]
             },
             {
@@ -157,7 +151,6 @@ const groups = [
                         id: 3,
                         agentName: "agent 3",
                     }
-
                 ]
             },
         ]
@@ -182,7 +175,6 @@ const groups = [
                         id: 3,
                         agentName: "agent 3",
                     }
-
                 ]
             },
             {
@@ -201,7 +193,6 @@ const groups = [
                         id: 3,
                         agentName: "agent 3",
                     }
-
                 ]
             },
             {
@@ -220,7 +211,6 @@ const groups = [
                         id: 3,
                         agentName: "agent 3",
                     }
-
                 ]
             },
             {
@@ -239,7 +229,6 @@ const groups = [
                         id: 3,
                         agentName: "agent 3",
                     }
-
                 ]
             },
         ]
@@ -264,7 +253,6 @@ const groups = [
                         id: 3,
                         agentName: "agent 3",
                     }
-
                 ]
             },
             {
@@ -283,7 +271,6 @@ const groups = [
                         id: 3,
                         agentName: "agent 3",
                     }
-
                 ]
             },
             {
@@ -302,7 +289,6 @@ const groups = [
                         id: 3,
                         agentName: "agent 3",
                     }
-
                 ]
             },
             {
@@ -321,7 +307,6 @@ const groups = [
                         id: 3,
                         agentName: "agent 3",
                     }
-
                 ]
             },
         ]
@@ -353,7 +338,8 @@ const data = [
         pv: 3908,
         amt: 2000,
     },
-
 ];
 
-module.exports = { data, groups }
+module.exports = {
+    data, groups
+}

@@ -65,9 +65,7 @@ export default class SimpleMapPage extends Component {
 
                     <MyGreatPlace lat={15.5560} lng={78.5010} text={'krnl'} />
                 </GoogleMap>
-                <div >
-                    <h1 >Hello world</h1>
-                </div>
+
             </div>
 
         );
