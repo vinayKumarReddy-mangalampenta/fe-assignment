@@ -1,391 +1,35 @@
-import React, { Component } from 'react'
+﻿import React, { Component } from 'react'
 import { BsSearch } from 'react-icons/bs'
 import GroupTab from './components/GroupTab'
 
-
+import AgentContext from '../../context/AgentContext';
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import "./index.css"
-const groups = [
-    {
-        gid: "g1",
-        name: "group 1 ",
-        locations: [
-            {
-                lid: "l1",
-                locationName: "location 1",
-                agents: [
-                    {
-                        id: 1,
-                        agentName: "agent 1",
-                    },
-                    {
-                        id: 2,
-                        agentName: "agent 2",
-                    },
-                    {
-                        id: 3,
-                        agentName: "agent 3",
-                    }
-                ]
-            },
-            {
-                lid: "l2",
-                locationName: "location 1",
-                agents: [
-                    {
-                        id: 1,
-                        agentName: "agent 1",
-                    },
-                    {
-                        id: 2,
-                        agentName: "agent 2",
-                    },
-                    {
-                        id: 3,
-                        agentName: "agent 3",
-                    }
 
-                ]
-            },
-            {
-                lid: "l3",
-                locationName: "location 1",
-                agents: [
-                    {
-                        id: 1,
-                        agentName: "agent 1",
-                    },
-                    {
-                        id: 2,
-                        agentName: "agent 2",
-                    },
-                    {
-                        id: 3,
-                        agentName: "agent 3",
-                    }
+import { data, groups } from './dummyData'
 
-                ]
-            },
-            {
-                lid: "l10",
-                locationName: "location 4",
-                agents: [
-                    {
-                        id: 1,
-                        agentName: "agent 1",
-                    },
-                    {
-                        id: 2,
-                        agentName: "agent 2",
-                    },
-                    {
-                        id: 3,
-                        agentName: "agent 3",
-                    }
 
-                ]
-            },
-        ]
-    },
-    {
-        gid: "g2",
-        name: "group 1 ",
-        locations: [
-            {
-                lid: "l3",
-                locationName: "location 1",
-                agents: [
-                    {
-                        id: 1,
-                        agentName: "agent 1",
-                    },
-                    {
-                        id: 2,
-                        agentName: "agent 2",
-                    },
-                    {
-                        id: 3,
-                        agentName: "agent 3",
-                    }
+const API_STATUS = {
+    initial: "INITIAL",
+    loading: "LOADING",
+    success: "SUCCESS",
+    failure: "FAILURE"
+}
 
-                ]
-            },
-            {
-                lid: "l2",
-                locationName: "location 1",
-                agents: [
-                    {
-                        id: 1,
-                        agentName: "agent 1",
-                    },
-                    {
-                        id: 2,
-                        agentName: "agent 2",
-                    },
-                    {
-                        id: 3,
-                        agentName: "agent 3",
-                    }
 
-                ]
-            },
-            {
-                lid: "l1",
-                locationName: "location 1",
-                agents: [
-                    {
-                        id: 1,
-                        agentName: "agent 1",
-                    },
-                    {
-                        id: 2,
-                        agentName: "agent 2",
-                    },
-                    {
-                        id: 3,
-                        agentName: "agent 3",
-                    }
-
-                ]
-            },
-            {
-                lid: "l4",
-                locationName: "location 4",
-                agents: [
-                    {
-                        id: 1,
-                        agentName: "agent 1",
-                    },
-                    {
-                        id: 2,
-                        agentName: "agent 2",
-                    },
-                    {
-                        id: 3,
-                        agentName: "agent 3",
-                    }
-
-                ]
-            },
-        ]
-    },
-    {
-        gid: "g3",
-        name: "group 1 ",
-        locations: [
-            {
-                lid: "l5",
-                locationName: "location 1",
-                agents: [
-                    {
-                        id: 1,
-                        agentName: "agent 1",
-                    },
-                    {
-                        id: 2,
-                        agentName: "agent 2",
-                    },
-                    {
-                        id: 3,
-                        agentName: "agent 3",
-                    }
-
-                ]
-            },
-            {
-                lid: "l2",
-                locationName: "location 1",
-                agents: [
-                    {
-                        id: 1,
-                        agentName: "agent 1",
-                    },
-                    {
-                        id: 2,
-                        agentName: "agent 2",
-                    },
-                    {
-                        id: 3,
-                        agentName: "agent 3",
-                    }
-
-                ]
-            },
-            {
-                lid: "l3",
-                locationName: "location 1",
-                agents: [
-                    {
-                        id: 1,
-                        agentName: "agent 1",
-                    },
-                    {
-                        id: 2,
-                        agentName: "agent 2",
-                    },
-                    {
-                        id: 3,
-                        agentName: "agent 3",
-                    }
-
-                ]
-            },
-            {
-                lid: "l6",
-                locationName: "location 4",
-                agents: [
-                    {
-                        id: 1,
-                        agentName: "agent 1",
-                    },
-                    {
-                        id: 2,
-                        agentName: "agent 2",
-                    },
-                    {
-                        id: 3,
-                        agentName: "agent 3",
-                    }
-
-                ]
-            },
-        ]
-    },
-    {
-        gid: "g4",
-        name: "group 1 ",
-        locations: [
-            {
-                lid: "l7",
-                locationName: "location 1",
-                agents: [
-                    {
-                        id: 1,
-                        agentName: "agent 1",
-                    },
-                    {
-                        id: 2,
-                        agentName: "agent 2",
-                    },
-                    {
-                        id: 3,
-                        agentName: "agent 3",
-                    }
-
-                ]
-            },
-            {
-                lid: "l2",
-                locationName: "location 1",
-                agents: [
-                    {
-                        id: 1,
-                        agentName: "agent 1",
-                    },
-                    {
-                        id: 2,
-                        agentName: "agent 2",
-                    },
-                    {
-                        id: 3,
-                        agentName: "agent 3",
-                    }
-
-                ]
-            },
-            {
-                lid: "l3",
-                locationName: "location 1",
-                agents: [
-                    {
-                        id: 1,
-                        agentName: "agent 1",
-                    },
-                    {
-                        id: 2,
-                        agentName: "agent 2",
-                    },
-                    {
-                        id: 3,
-                        agentName: "agent 3",
-                    }
-
-                ]
-            },
-            {
-                lid: "l8",
-                locationName: "location 4",
-                agents: [
-                    {
-                        id: 1,
-                        agentName: "agent 1",
-                    },
-                    {
-                        id: 2,
-                        agentName: "agent 2",
-                    },
-                    {
-                        id: 3,
-                        agentName: "agent 3",
-                    }
-
-                ]
-            },
-        ]
-    },
-]
-
-const data = [
-    {
-        name: 'Page A',
-        uv: 0,
-        pv: 2400,
-        amt: 2400,
-    },
-    {
-        name: 'Page B',
-        uv: 1000,
-        pv: 1398,
-        amt: 2210,
-    },
-    {
-        name: 'Page C',
-        uv: 2000,
-        pv: 9800,
-        amt: 2290,
-    },
-    {
-        name: 'Page D',
-        uv: 2780,
-        pv: 3908,
-        amt: 2000,
-    },
-    {
-        name: 'Page E',
-        uv: 1890,
-        pv: 4800,
-        amt: 2181,
-    },
-    {
-        name: 'Page F',
-        uv: 2390,
-        pv: 3800,
-        amt: 2500,
-    },
-    {
-        name: 'Page G',
-        uv: 3490,
-        pv: 4300,
-        amt: 2100,
-    },
-];
-
+const DATA_STATUS_SHOWN = {
+    wifi: "WIFI STATUS",
+    network: "NETWORK STATUS",
+    application: "APPLICATION STATUS"
+}
 
 class AgentNavbar extends Component {
-
     state = {
-        activeGroup: null
+        activeGroup: null,
+        currUserAddress: null,
+        apiStatus: API_STATUS.success,
+        dataShowing: DATA_STATUS_SHOWN.wifi
     }
 
     setAsActiveGroup = (id) => {
@@ -398,82 +42,35 @@ class AgentNavbar extends Component {
         e.preventDefault()
     }
 
-    render() {
-        const { activeGroup } = this.state
-        return (
-            <div className='main-container'>
-                {/* left sub navbar */}
-                <div className='sub-nav-con'>
 
-                    <div className='search-bar-con'>
-                        <form onSubmit={this.filterAgents} className="search-form">
-                            {/* <span >Out Agents</span> */}
-                            <input type="search" className='search-input' placeholder='search-agents' />
-                            <button type='submit' className='search-submit-btn' >
-                                <BsSearch />
-                            </button>
+    changeCurrUser = (id) => {
+        this.setState({ currUserAddress: id })
+    }
 
-                        </form>
+    displayInitialView = () => (
+        <div>
+            <h1 >Please select the user to view apiStatus</h1>
+        </div>
+    )
 
-                    </div>
-                    {/* showing groups */}
-                    <ul className='groups-con'>
-                        {
-                            groups.map((each, index) => (
-                                <GroupTab key={each.gid} group={each} index={index} isActive={each.gid === activeGroup} setActiveGroup={this.setAsActiveGroup} />
-                            ))
-                        }
+    renderApiFailureView = () => (
+        <div >
+            <h1 >There is some issue with us showing details</h1>
+        </div>
+    )
 
 
-                    </ul>
-                </div>
+    renderNetworkWifiApplicationStatus = () => {
+        const { dataShowing } = this.state
 
-                {/* right content display */}
-                <div className='display-container'>
-                    <span ><b>User:</b> <i> 101.22.4.12</i></span>
-                    <div className='status-graph-con'>
-                        <div className='overall-status-con'>
-                            <h1 >Overall Status</h1>
-                            <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Smiley.svg/1200px-Smiley.svg.png' className='status-smile' alt='good' />
-                        </div>
-                        <div className='status-graph'>
-                            <LineChart width={600} height={200} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-                                <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-                                <CartesianGrid stroke="#ccc" />
-                                <XAxis dataKey="name" />
-                                <YAxis />
-                                <Tooltip />
-                            </LineChart>
-                        </div>
-                    </div>
-
-                    <div className='network-wifi-application-con'>
-                        <div className='network-cards'>
-                            <span >
-                                Wifi Status
-                            </span>
-                            <img src='https://cdn.pixabay.com/photo/2016/03/30/13/24/wifi-1290667__340.png' className='network-card-img' alt='good' />
-
-                        </div>
-                        <div className='network-cards'>
-                            <span >
-                                Network Status
-                            </span>
-                            <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Smiley.svg/1200px-Smiley.svg.png' className='status-smile' alt='good' />
-
-                        </div>
-                        <div className='network-cards'>
-                            <span >
-                                Application Status
-                            </span>
-                            <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Smiley.svg/1200px-Smiley.svg.png' className='status-smile' alt='good' />
-
-                        </div>
-                    </div>
-
+        switch (dataShowing) {
+            case DATA_STATUS_SHOWN.wifi:
+                return (
                     <div className='wifi-status-card'>
                         <div >
-                            <span className='heading--1' >Wifi Status</span>
+                            <span className='heading--1' >
+                                wifi status
+                            </span>
                         </div>
 
                         <ul className='wifi-status-list'>
@@ -497,9 +94,233 @@ class AgentNavbar extends Component {
 
                     </div>
 
+                )
+
+            case DATA_STATUS_SHOWN.network:
+                return (
+                    <div className='wifi-status-card'>
+                        <div >
+                            <span className='heading--1' >
+                                Network status
+                            </span>
+                        </div>
+
+                        <ul className='wifi-status-list'>
+                            <li >
+                                Channel: 6
+                            </li>
+                            <li >
+                                Bitrate: 6
+                            </li>
+                            <li >
+                                Signal Strength: Good
+                            </li>
+                            <li >
+                                Channel Utilization
+                            </li>
+                            <li >
+                                Packet Retry
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                )
+
+            case DATA_STATUS_SHOWN.application:
+                return (
+                    <div className='wifi-status-card'>
+                        <div >
+                            <span className='heading--1' >
+                                Application status
+                            </span>
+                        </div>
+
+                        <ul className='wifi-status-list'>
+                            <li >
+                                Channel: 6
+                            </li>
+                            <li >
+                                Bitrate: 6
+                            </li>
+                            <li >
+                                Signal Strength: Good
+                            </li>
+                            <li >
+                                Channel Utilization
+                            </li>
+                            <li >
+                                Packet Retry
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                )
+
+            default:
+                return (
+                    <div className='wifi-status-card'>
+                        <div >
+                            <span className='heading--1' >
+                                wifi status {dataShowing}
+                            </span>
+                        </div>
+
+                        <ul className='wifi-status-list'>
+                            <li >
+                                Channel: 6
+                            </li>
+                            <li >
+                                Bitrate: 6
+                            </li>
+                            <li >
+                                Signal Strength: Good
+                            </li>
+                            <li >
+                                Channel Utilization
+                            </li>
+                            <li >
+                                Packet Retry
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                )
+        }
+
+    }
+
+    renderAgentDetails = () => {
+        const { currUserAddress, dataShowing } = this.state
+        return (
+            <div className='display-container'>
+                <span>
+                    <b>User:</b>
+                    <i> {currUserAddress}</i>
+                </span>
+                <div className='status-graph-con'>
+                    <div className='overall-status-con'>
+                        <h1 >Overall Status</h1>
+                        <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Smiley.svg/1200px-Smiley.svg.png' className='status-smile' alt='good' />
+                    </div>
+                    <div className='status-graph'>
+                        <LineChart width={300} height={200} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+                            <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+                            <CartesianGrid stroke="#ccc" />
+                            <XAxis dataKey="name" />
+                            <YAxis />
+                            <Tooltip />
+                        </LineChart>
+                    </div>
                 </div>
+
+                <div className='network-wifi-application-con'>
+                    <div className='network-cards' onClick={() => {
+                        this.setState({ dataShowing: DATA_STATUS_SHOWN.wifi })
+                    }}>
+                        <span >
+                            Wifi Status
+                        </span>
+                        <img src='https://cdn.pixabay.com/photo/2016/03/30/13/24/wifi-1290667__340.png' className='network-card-img' alt='good' />
+                    </div>
+                    <div className='network-cards' onClick={() => {
+                        this.setState({ dataShowing: DATA_STATUS_SHOWN.network })
+                    }}>
+                        <span >
+                            Network Status
+                        </span>
+                        <img src='network.jpg' className='status-smile' alt='good' />
+
+                    </div>
+                    <div className='network-cards' onClick={() => {
+                        this.setState({ dataShowing: DATA_STATUS_SHOWN.application })
+                    }}>
+                        <span >
+                            Application Status
+                        </span>
+                        <img src='Application.jpg' className='status-smile' alt='good' />
+
+                    </div>
+                </div>
+
+                {this.renderNetworkWifiApplicationStatus()}
             </div>
 
+        )
+    }
+
+
+    showDisplayContainer = () => {
+        const { apiStatus } = this.state
+
+        switch (apiStatus) {
+            case API_STATUS.initial:
+                return this.displayInitialView()
+
+            case API_STATUS.loading:
+                return (
+                    <div >
+                        <h1 >Loading.....!!</h1>
+                    </div>
+                )
+
+            case API_STATUS.success:
+                return this.renderAgentDetails()
+
+            case API_STATUS.failure:
+                return this.renderApiFailureView()
+
+            default:
+                return this.displayInitialView()
+
+        }
+    }
+
+
+
+    render() {
+        const { activeGroup, currUserAddress } = this.state
+        return (
+            <AgentContext.Provider value={{
+                currUserAddress,
+                changeUser: this.changeCurrUser
+            }}>
+
+                <div className='main-container'>
+                    {/* left sub navbar */}
+                    <div className='sub-nav-con'>
+
+                        <div className='search-bar-con'>
+                            <form onSubmit={this.filterAgents} className="search-form">
+                                {/* <span >Out Agents</span> */}
+                                <input type="search" className='search-input' placeholder='search-agents' />
+                                <button type='submit' className='search-submit-btn' >
+                                    <BsSearch />
+                                </button>
+
+                            </form>
+
+                        </div>
+                        {/* showing groups */}
+                        <ul className='groups-con'>
+                            {
+                                groups.map((each, index) => (
+                                    <GroupTab key={each.gid} group={each} index={index} isActive={each.gid === activeGroup} setActiveGroup={this.setAsActiveGroup} />
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    {/* right content display */}
+                    {this.showDisplayContainer()}
+                </div>
+
+            </AgentContext.Provider>
         )
     }
 }

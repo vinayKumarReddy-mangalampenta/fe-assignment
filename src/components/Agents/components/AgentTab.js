@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { BsChevronDown, BsChevronRight } from 'react-icons/bs'
 
+import AgentContext from '../../../context/AgentContext'
+
 class AgentTab extends Component {
 
     state = { activeAgentConnection: 1 }
@@ -12,7 +14,10 @@ class AgentTab extends Component {
 
     setActiveAgentConnection = (id) => {
         this.setState({ activeAgentConnection: id })
-        //TODO: maintain current connection as in context and display the details of it in index.js 
+
+        const { changeUser } = this.context
+
+        changeUser(Math.random())
     }
 
     render() {
@@ -43,6 +48,11 @@ export default AgentTab
 
 
 
+
+
+AgentTab.contextType = AgentContext;
+
+
 const AgentConnection = (props) => {
     const { setActiveAgentConnection, connection, isActive } = props
 
@@ -60,4 +70,6 @@ const AgentConnection = (props) => {
             </button>
         </li>
     )
+
+
 }
